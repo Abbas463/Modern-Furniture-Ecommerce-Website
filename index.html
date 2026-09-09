@@ -1,448 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nordvik - Modern Furniture</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nordvik - Thoughtful Scandinavian Furniture</title>
+  <meta name="description" content="Slow-made Scandinavian furniture for a considered life.">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Premium Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <h1>NORDVIK</h1>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#collections">Collection</a></li>
-                <li><a href="#blog">Blog</a></li>
-            </ul>
-            <div class="nav-icons">
-                <button class="icon-btn" id="menuBtn" aria-label="Menu">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <line x1="3" y1="12" x2="21" y2="12"></line>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="18" x2="21" y2="18"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
+  <div class="shell">
+    <nav class="h-[64px] px-8 lg:px-12 flex items-center justify-between border-b hairline bg-white">
+      <a href="#home" class="flex items-center gap-2 font-semibold text-[17px] tracking-[-.05em]" aria-label="Nordvik home">
+        <span class="w-4 h-4 rounded-full border border-black"></span>nordvik
+      </a>
+      <div class="desktop flex items-center gap-12 text-[10px] tracking-[.15em] text-neutral-600 uppercase">
+        <a class="nav-link active" href="#home">Home</a><a class="nav-link" href="#about">About us</a><a class="nav-link" href="#collection">Collection</a><a class="nav-link" href="#journal">Journal</a>
+      </div>
+      <div class="flex items-center gap-5">
+        <button id="cartBtn" class="desktop text-[10px] tracking-[.13em] text-neutral-500 uppercase">Cart (<span id="cartCount">2</span>)</button>
+        <button id="menuBtn" class="w-7 h-7 flex flex-col justify-center gap-[5px]" aria-label="Open menu"><span class="block w-5 h-px bg-black"></span><span class="block w-5 h-px bg-black"></span></button>
+      </div>
     </nav>
 
-    <!-- Editorial Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h2>Furniture for<br>quiet spaces.</h2>
-                <p>Thoughtfully crafted pieces that bring warmth, simplicity, and timeless elegance to modern living.</p>
-                <div class="hero-cta">
-                    <a href="#collections" class="btn btn-primary">Shop the Collection</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80" alt="Modern Interior">
-            </div>
+    <main>
+      <section id="home" class="hero border-b hairline bg-white">
+        <div class="hero-copy">
+          <div>
+            <p class="text-[13px] tracking-[.08em] uppercase text-neutral-500 mb-7">Interiors - Est. 1994, Copenhagen</p>
+            <h1 class="hero-title font-light">Shape Your Space<br>Elevate Your Life</h1>
+            <p class="mt-8 max-w-[540px] text-[14px] leading-6 text-neutral-500">Slow-made pieces for rooms that are meant to be lived in - solid oak, brushed steel, wool woven in the Faroes.</p>
+            <a href="#collection" class="btn mt-7">Shop the collection <span>→</span></a>
+          </div>
+          <div class="hero-brand display font-light">Nordvik</div>
         </div>
-    </section>
-
-    <!-- Featured Collection - Asymmetric Layout -->
-    <section class="featured-collection">
-        <div class="container">
-            <div class="featured-content">
-                <p class="featured-label">Featured Collection</p>
-                <h2 class="featured-title">The Essentials</h2>
-                <p class="featured-description">Curated foundational pieces that form the heart of a well-designed home. Each item crafted with intention, designed to last generations.</p>
-                <a href="#products" class="btn btn-tertiary">Explore Collection →</a>
-            </div>
-            <div class="featured-images">
-                <div class="featured-image-main">
-                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80" alt="Featured Sofa">
-                </div>
-                <div class="featured-image-small">
-                    <img src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=400&q=80" alt="Accent Chair">
-                </div>
-                <div class="featured-image-small">
-                    <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=400&q=80" alt="Side Table">
-                </div>
-            </div>
+        <div class="hero-visual">
+          <div class="hero-image"><img id="heroImg" src="https://images.pexels.com/photos/35891648/pexels-photo-35891648.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Halden orange lounge sofa"></div>
+          <div class="flex items-center justify-between px-8 bg-white border-t hairline">
+            <div><h3 id="heroProduct" class="text-[15px] font-medium tracking-[-.03em]">Halden Lounge Sofa</h3><p id="heroDetails" class="text-[10px] text-neutral-500 mt-1">Rust boucle. Made to order in eight weeks.</p></div>
+            <div class="flex items-center gap-3"><span id="slideNo" class="text-[9px] tracking-[.16em]">01 / 03</span><button class="slide-btn border hairline w-9 h-9" data-dir="-1" aria-label="Previous product">←</button><button class="slide-btn border hairline w-9 h-9" data-dir="1" aria-label="Next product">→</button></div>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Best Sellers Section -->
-    <section id="products" class="products">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-subtitle">Curated Selection</p>
-                <h2 class="section-title">Our Collection</h2>
-            </div>
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <button class="wishlist-btn" aria-label="Add to wishlist">
-                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                        </button>
-                        <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=600&q=80" alt="Nordic Sofa">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Living Room</p>
-                        <h3>Nordic Sofa</h3>
-                        <p class="product-price">$1,299</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <button class="wishlist-btn" aria-label="Add to wishlist">
-                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                        </button>
-                        <img src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=600&q=80" alt="Lounge Chair">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Living Room</p>
-                        <h3>Lounge Chair</h3>
-                        <p class="product-price">$449</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <button class="wishlist-btn" aria-label="Add to wishlist">
-                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                        </button>
-                        <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=600&q=80" alt="Dining Table">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Dining</p>
-                        <h3>Dining Table</h3>
-                        <p class="product-price">$899</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <button class="wishlist-btn" aria-label="Add to wishlist">
-                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                        </button>
-                        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80" alt="Platform Bed">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Bedroom</p>
-                        <h3>Platform Bed</h3>
-                        <p class="product-price">$1,599</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <button class="wishlist-btn" aria-label="Add to wishlist">
-                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                        </button>
-                        <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=600&q=80" alt="Bookshelf">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Storage</p>
-                        <h3>Bookshelf</h3>
-                        <p class="product-price">$699</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <button class="wishlist-btn" aria-label="Add to wishlist">
-                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                        </button>
-                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&q=80" alt="Table Lamp">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Lighting</p>
-                        <h3>Table Lamp</h3>
-                        <p class="product-price">$129</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <button class="wishlist-btn" aria-label="Add to wishlist">
-                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                        </button>
-                        <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=600&q=80" alt="Coffee Table">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Living Room</p>
-                        <h3>Coffee Table</h3>
-                        <p class="product-price">$399</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <button class="wishlist-btn" aria-label="Add to wishlist">
-                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                        </button>
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80" alt="Armchair">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Living Room</p>
-                        <h3>Armchair</h3>
-                        <p class="product-price">$549</p>
-                    </div>
-                </div>
-            </div>
+      <section id="about" class="philosophy px-8 pt-[105px] pb-[70px] bg-white border-b hairline overflow-hidden">
+        <div class="reveal text-center">
+          <p class="text-[12px] tracking-[.1em] uppercase text-neutral-400">Our philosophy</p>
+          <h2 class="text-[42px] leading-[1.08] font-light mt-3">Where design meets<br>lifestyle in perfect harmony</h2>
         </div>
-    </section>
-
-    <!-- Editorial Story Section -->
-    <section class="editorial-story">
-        <div class="container">
-            <div class="story-image">
-                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80" alt="Craftsmanship">
-            </div>
-            <div class="story-content">
-                <p class="story-label">Our Philosophy</p>
-                <h2 class="story-title">Designed for<br>mindful living</h2>
-                <p class="story-description">Every piece begins with a question: How can this object bring more calm, more beauty, more meaning to daily life? We work with master craftsmen across Scandinavia to create furniture that honors traditional techniques while embracing modern simplicity.</p>
-                <a href="#about" class="btn btn-tertiary">Discover Our Philosophy →</a>
-            </div>
+        <div class="product-stage reveal">
+          <figure class="product-shot"><img src="https://images.pexels.com/photos/11112740/pexels-photo-11112740.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Ravn side table"><figcaption>Ravn side table</figcaption></figure>
+          <figure class="product-shot"><img src="https://images.pexels.com/photos/11112735/pexels-photo-11112735.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Halden lounge chair"><figcaption>Halden lounge chair</figcaption></figure>
+          <figure class="product-shot"><img src="https://images.pexels.com/photos/11112733/pexels-photo-11112733.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Bre stool"><figcaption>Bre stool</figcaption></figure>
         </div>
-    </section>
-
-    <!-- Category Showcase -->
-    <section id="collections" class="category-showcase">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-subtitle">Browse by Room</p>
-                <h2 class="section-title">Collections</h2>
-            </div>
-            <div class="category-grid">
-                <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80" alt="Living Room">
-                    <div class="category-overlay">
-                        <h3>Living Room</h3>
-                        <p>18 Pieces</p>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80" alt="Bedroom">
-                    <div class="category-overlay">
-                        <h3>Bedroom</h3>
-                        <p>12 Pieces</p>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=600&q=80" alt="Dining">
-                    <div class="category-overlay">
-                        <h3>Dining</h3>
-                        <p>8 Pieces</p>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80" alt="Chairs">
-                    <div class="category-overlay">
-                        <h3>Chairs</h3>
-                        <p>15 Pieces</p>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?w=600&q=80" alt="Tables">
-                    <div class="category-overlay">
-                        <h3>Tables</h3>
-                        <p>10 Pieces</p>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=600&q=80" alt="Lighting">
-                    <div class="category-overlay">
-                        <h3>Lighting</h3>
-                        <p>6 Pieces</p>
-                    </div>
-                </div>
-            </div>
+        <div class="rating-row reveal flex justify-center items-center gap-10 mt-5">
+          <div class="text-[25px] tracking-[-.05em]">4.9/5 <span class="text-[12px] tracking-[.12em]">★★★★★</span></div>
+          <p class="max-w-[430px] text-[10px] leading-4 text-neutral-500">Rated by 3,140 owners across 26 countries - for comfort that holds up years after the room has changed around it.</p>
         </div>
-    </section>
+      </section>
 
-    <!-- Craftsmanship Section -->
-    <section class="craftsmanship">
-        <div class="container">
-            <div class="craftsmanship-content">
-                <p class="craftsmanship-label">How We Make</p>
-                <h2 class="craftsmanship-title">Made to last.<br>Designed to belong.</h2>
-                <p class="craftsmanship-description">Each piece is crafted using sustainably sourced materials and time-honored techniques. From the selection of solid wood to the final hand-rubbed finish, every step is performed with meticulous attention to detail.</p>
-                <a href="#about" class="btn btn-tertiary">Learn About Our Process →</a>
-            </div>
-            <div class="craftsmanship-image">
-                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80" alt="Craftsman Working">
-            </div>
+      <section id="collection" class="px-7 lg:px-12 py-[75px] bg-[#f7f7f6] border-b hairline">
+        <div class="reveal flex items-end justify-between gap-4 mb-8">
+          <h2 class="text-[34px] leading-[1] font-light">Designed to<br>impress - built to last</h2>
+          <div class="text-right"><p class="desktop max-w-[300px] text-[9px] leading-4 text-neutral-500 mb-3">Twenty-two pieces in the current collection, each drawn in Copenhagen and built by family workshops in Jutland.</p><a href="#products" class="btn !py-2.5">View all 22 →</a></div>
         </div>
-    </section>
-
-    <!-- New Arrivals Section -->
-    <section id="new-arrivals" class="new-arrivals">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-subtitle">Just In</p>
-                <h2 class="section-title">New Arrivals</h2>
-            </div>
-            <div class="new-arrivals-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <button class="wishlist-btn" aria-label="Add to wishlist">
-                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                        </button>
-                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80" alt="Velvet Sofa">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Living Room</p>
-                        <h3>Velvet Sofa</h3>
-                        <p class="product-price">$1,899</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <button class="wishlist-btn" aria-label="Add to wishlist">
-                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                        </button>
-                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&q=80" alt="Oak Chair">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Dining</p>
-                        <h3>Oak Chair</h3>
-                        <p class="product-price">$349</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <button class="wishlist-btn" aria-label="Add to wishlist">
-                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                        </button>
-                        <img src="https://images.unsplash.com/photo-1540932296774-3ed69227b337?w=600&q=80" alt="Floor Lamp">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">Lighting</p>
-                        <h3>Floor Lamp</h3>
-                        <p class="product-price">$279</p>
-                    </div>
-                </div>
-            </div>
+        <div id="products" class="collection-grid reveal">
+          <article class="main-product"><img src="https://images.pexels.com/photos/7602875/pexels-photo-7602875.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Halden lounge chair in an interior"><div class="absolute inset-x-0 bottom-0 bg-white/95 px-4 py-3 flex justify-between text-[11px]"><span><small class="block uppercase tracking-[.13em] text-[8px] text-neutral-400 mb-1">Seating - oak & boucle</small>Halden lounge chair</span><b class="font-normal self-end">€1,840</b></div></article>
+          <article class="mini-product"><img src="https://images.pexels.com/photos/11112732/pexels-photo-11112732.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Sund dining chair"><div class="p-4 text-[10px]"><small class="uppercase tracking-[.12em] text-[8px] text-neutral-400">Dining - ash</small><h3 class="mt-2 text-[12px]">Sund dining chair</h3><p class="text-neutral-500 mt-1">€420 · four colourways</p></div></article>
+          <article class="mini-product"><img src="https://images.pexels.com/photos/11112740/pexels-photo-11112740.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Ravn side table"><div class="p-4 text-[10px]"><small class="uppercase tracking-[.12em] text-[8px] text-neutral-400">Tables - lacquer</small><h3 class="mt-2 text-[12px]">Ravn side table</h3><p class="text-neutral-500 mt-1">€310 · two heights</p></div></article>
         </div>
-    </section>
+        <article class="wide-product reveal mt-3">
+          <img src="https://images.pexels.com/photos/5998091/pexels-photo-5998091.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Bre modular sofa">
+          <div class="p-7 flex flex-col justify-between"><div><small class="uppercase tracking-[.12em] text-[8px] text-neutral-400">Featured - Autumn 26</small><h3 class="text-[19px] mt-2">Bre modular sofa, built around you</h3><p class="text-[10px] leading-4 text-neutral-500 mt-3">Six modules, one frame. Reconfigure it when the room changes; re-cover it when the wool finally gives in.</p></div><div class="flex justify-between items-center"><span class="text-[17px]">€3,290</span><button class="btn configure !py-2.5">Configure →</button></div></div>
+        </article>
+      </section>
 
-    <!-- Brand Statement -->
-    <section class="brand-statement">
-        <div class="container">
-            <h2>Objects with purpose.<br>Spaces with character.</h2>
+      <section class="feature-grid bg-white border-b hairline">
+        <div class="p-7 lg:p-12 border-r hairline reveal">
+          <p class="text-[9px] uppercase tracking-[.15em] text-neutral-400 mb-5">Why Nordvik</p>
+          <div class="benefits">
+            <div class="benefit"><h3 class="text-[12px] tracking-[-.02em]">○ &nbsp; Premium quality materials</h3><p class="text-[8px] text-neutral-500 mt-2 ml-6">FSC oak, full-grain leather, wool from a mill four hours north of the workshop.</p></div>
+            <div class="benefit"><h3 class="text-[12px]">◇ &nbsp; Eco-friendly making</h3><p class="text-[8px] text-neutral-500 mt-2 ml-6">Water-based finishes, zero-landfill workshops.</p></div>
+            <div class="benefit"><h3 class="text-[12px]">⊕ &nbsp; Innovative design</h3><p class="text-[8px] text-neutral-500 mt-2 ml-6">Every joint drawn twice, once for the maker, once for repair.</p></div>
+            <div class="benefit"><h3 class="text-[12px]">◷ &nbsp; Long-term durability</h3><p class="text-[8px] text-neutral-500 mt-2 ml-6">A ten-year structural guarantee and repair service that outlives it.</p></div>
+          </div>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-subtitle">Our Story</p>
-                <h2 class="section-title">About Nordvik</h2>
-            </div>
-            <div class="about-content">
-                <p>Founded in Copenhagen, Nordvik represents the intersection of traditional Scandinavian craftsmanship and modern minimalist design. We believe that furniture should not only be beautiful but also meaningful—each piece tells a story of careful material selection, skilled artisanship, and thoughtful design.</p>
-                <p>Our partnership with master craftsmen across Denmark, Sweden, and Norway allows us to create furniture that honors time-honored techniques while embracing contemporary living. Every curve, every joint, every finish is considered with intention.</p>
-                <p>We source sustainable materials whenever possible, working with forests certified by the Forest Stewardship Council and using natural finishes that are safe for both the environment and your home.</p>
-            </div>
+        <div class="reveal">
+          <div class="p-8 lg:p-12 min-h-[265px] flex flex-col items-start justify-center">
+            <h2 class="text-[31px] leading-[1.04] font-light">Elevate your<br>everyday comfort</h2>
+            <p class="text-[9px] leading-4 text-neutral-500 max-w-[310px] mt-4 mb-5">Book a studio visit in Copenhagen or Antwerp, or have a designer walk your floor plan with you over a call.</p>
+            <button class="btn consultation !py-2.5">Book a consultation →</button>
+          </div>
+          <img class="consult-image w-full h-[250px] object-cover" src="https://images.pexels.com/photos/30520758/pexels-photo-30520758.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Green sofa in a sunlit room">
         </div>
-    </section>
+      </section>
 
-    <!-- Blog Section -->
-    <section id="blog" class="blog-section">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-subtitle">Journal</p>
-                <h2 class="section-title">Blog</h2>
-            </div>
-            <div class="blog-grid">
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&q=80" alt="Blog Post">
-                    </div>
-                    <div class="blog-content">
-                        <p class="blog-category">Design</p>
-                        <h3>The Art of Scandinavian Minimalism</h3>
-                        <p>Exploring the principles that define Nordic design and how to incorporate them into your home.</p>
-                        <a href="#" class="blog-link">Read More →</a>
-                    </div>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80" alt="Blog Post">
-                    </div>
-                    <div class="blog-content">
-                        <p class="blog-category">Craftsmanship</p>
-                        <h3>Behind the Scenes: Our Workshop</h3>
-                        <p>A glimpse into the meticulous process of creating handcrafted furniture pieces.</p>
-                        <a href="#" class="blog-link">Read More →</a>
-                    </div>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80" alt="Blog Post">
-                    </div>
-                    <div class="blog-content">
-                        <p class="blog-category">Interior</p>
-                        <h3>Creating Calm Spaces</h3>
-                        <p>How thoughtful furniture selection can transform your living environment into a sanctuary.</p>
-                        <a href="#" class="blog-link">Read More →</a>
-                    </div>
-                </article>
-            </div>
+      <section id="journal" class="px-7 lg:px-12 py-[90px] bg-[#f7f7f6] border-b hairline">
+        <div class="reveal text-center mb-14">
+          <h2 class="text-[36px] leading-[1.04] font-light">Loved in homes that<br>value the quiet details</h2>
         </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="newsletter">
-        <div class="container">
-            <div class="newsletter-content">
-                <h2>Stay inspired.</h2>
-                <p>Receive curated design inspiration and exclusive collection updates.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit" class="btn">Subscribe</button>
-                </form>
-            </div>
+        <div class="stories-grid reveal">
+          <article class="story-panel story-photo">
+            <img src="https://images.pexels.com/photos/6707628/pexels-photo-6707628.jpeg?auto=compress&cs=tinysrgb&w=900" alt="A softly lit Scandinavian living room">
+            <span class="absolute top-4 left-4 bg-white px-3 py-2 text-[8px] tracking-[.14em] uppercase">Sund series · Oslo</span>
+          </article>
+          <article class="story-panel story-copy">
+            <div class="flex justify-between"><b class="text-[13px] font-medium">studio · vestbo</b><span class="text-neutral-300">○ ○</span></div>
+            <p class="text-[12px] leading-5 max-w-[330px]">We specified Nordvik in eleven apartments last year. Not one client has asked us to change a single piece since.</p>
+            <div class="flex items-center gap-3"><img class="avatar" src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Mette Vestbo"><div><b class="block text-[10px]">Mette Vestbo</b><span class="text-[8px] text-neutral-500">Principal, Studio Vestbo</span></div></div>
+          </article>
+          <article class="story-panel story-copy">
+            <div class="flex items-center gap-3"><img class="avatar" src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Bieber Celvin"><div><b class="block text-[10px]">Bieber Celvin</b><span class="text-[8px] text-neutral-500">Principal, factory20</span></div></div>
+            <p class="text-[12px] leading-5 text-neutral-600">Four years in, the oak has gone honey-coloured and the seat still holds its shape. It reads as the most expensive thing in the room and it wasn't.</p>
+            <div class="pt-5 border-t hairline flex justify-between text-[10px]"><span class="tracking-[.16em]">★★★★★</span><span class="text-[16px]">4.9/5</span></div>
+          </article>
         </div>
-    </section>
-
-    <!-- Premium Footer -->
-    <footer id="contact" class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h3>NORDVIK</h3>
-                    <p>Modern Scandinavian furniture for contemporary living. Crafted with intention, designed to last.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Navigation</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#collections">Collection</a></li>
-                        <li><a href="#blog">Blog</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Customer Care</h4>
-                    <ul>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Shipping & Returns</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Size Guide</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <ul>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">Pinterest</a></li>
-                        <li><a href="#">Facebook</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Nordvik. All rights reserved. Designed with intention.</p>
-            </div>
+        <p class="reveal text-center text-[10px] text-neutral-500 mt-16 mb-9">Thirty years of making, and the same measure of a good piece: the day you stop noticing it is<br class="desktop"> the day it started working.</p>
+        <div class="stats-grid reveal">
+          <div class="stat"><strong class="text-[28px] font-normal tracking-[-.05em]">4.9/5</strong><span class="text-[7px] uppercase tracking-[.15em] text-neutral-400 mt-2">Customer rating</span></div>
+          <div class="stat"><strong class="text-[28px] font-normal tracking-[-.05em]">20K+</strong><span class="text-[7px] uppercase tracking-[.15em] text-neutral-400 mt-2">Happy customers</span></div>
+          <div class="stat"><strong class="text-[28px] font-normal tracking-[-.05em]">96.7%</strong><span class="text-[7px] uppercase tracking-[.15em] text-neutral-400 mt-2">Satisfaction rate</span></div>
+          <div class="stat"><strong class="text-[28px] font-normal tracking-[-.05em]">30+</strong><span class="text-[7px] uppercase tracking-[.15em] text-neutral-400 mt-2">Years of making</span></div>
         </div>
-    </footer>
+      </section>
 
-    <script src="script.js"></script>
+      <footer class="px-7 lg:px-12 pt-14 bg-[#151612] text-white overflow-hidden">
+        <div class="footer-top">
+          <div><div class="display text-[20px]">nordvik</div><p class="text-[9px] leading-4 text-neutral-500 max-w-[220px] mt-4">Furniture made slowly in Denmark, shipped to 26 countries, repaired for as long as you keep it.</p><a class="footer-link mt-5" href="mailto:studio@nordvik.dk">studio@nordvik.dk</a></div>
+          <div><p class="text-[8px] uppercase tracking-[.18em] text-neutral-500">Explore</p><a class="footer-link" href="#collection">Collection</a><a class="footer-link" href="#about">Our story</a><a class="footer-link" href="#journal">Journal</a><a class="footer-link" href="#collection">Showrooms</a></div>
+          <div><p class="text-[8px] uppercase tracking-[.18em] text-neutral-500">Support</p><a class="footer-link" href="mailto:studio@nordvik.dk">Delivery</a><a class="footer-link" href="mailto:studio@nordvik.dk">Care & repair</a><a class="footer-link" href="mailto:studio@nordvik.dk">Returns</a><a class="footer-link" href="mailto:studio@nordvik.dk">Contact</a></div>
+          <div><h3 class="text-[19px]">Letters from the workshop</h3><p class="text-[9px] leading-4 text-neutral-500 mt-3">New pieces, studio notes, and the occasional archive sale. Twice a month, no more.</p><form id="newsletterForm" class="newsletter"><input id="emailInput" type="email" placeholder="Your email" aria-label="Your email" required><button type="submit">Subscribe</button></form></div>
+        </div>
+        <div class="mt-14 pt-4 border-t border-white/10 flex flex-wrap justify-between gap-3 text-[8px] text-neutral-600"><span>© 2026 Nordvik Interiors ApS - Copenhagen</span><span>Privacy Policy &nbsp;&nbsp; Terms & Conditions &nbsp;&nbsp; Cookies &nbsp;&nbsp; English</span></div>
+        <div class="footer-word">nordvik</div>
+      </footer>
+    </main>
+  </div>
+
+  <aside id="menu" class="menu-panel" aria-hidden="true"><div class="menu-inner"><div class="flex justify-between items-center mb-16"><div class="text-lg">○ nordvik</div><button id="closeMenu" class="text-xs uppercase tracking-[.2em]">Close &nbsp; ×</button></div><a class="menu-big menu-nav" href="#home">Home</a><a class="menu-big menu-nav" href="#about">Philosophy</a><a class="menu-big menu-nav" href="#collection">Collection</a><a class="menu-big menu-nav" href="#journal">Journal</a></div></aside>
+  <div id="toast" class="toast" role="status">Your request has been received.</div>
+
+  <script src="script.js"></script>
 </body>
 </html>

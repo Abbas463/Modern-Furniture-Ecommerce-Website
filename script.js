@@ -1,201 +1,61 @@
-// Premium notification system
-function showPremiumNotification(message) {
-    const notification = document.createElement('div');
-    notification.className = 'premium-notification';
-    notification.innerHTML = `
-        <span>${message}</span>
-    `;
-    notification.style.cssText = `
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        background-color: #1D0604;
-        color: #FEFEFC;
-        padding: 1rem 2rem;
-        border-radius: 2px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-        z-index: 3000;
-        font-family: 'Inter', sans-serif;
-        font-size: 0.9rem;
-        letter-spacing: 0.02em;
-        animation: notificationSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    `;
-    
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-        notification.style.animation = 'notificationSlideOut 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-        setTimeout(() => {
-            document.body.removeChild(notification);
-        }, 400);
-    }, 3000);
-}
+const slides = [
+  { image:'https://images.pexels.com/photos/35891648/pexels-photo-35891648.jpeg?auto=compress&cs=tinysrgb&w=1200', name:'Halden Lounge Sofa', detail:'Rust boucle. Made to order in eight weeks.' },
+  { image:'https://images.pexels.com/photos/11112735/pexels-photo-11112735.jpeg?auto=compress&cs=tinysrgb&w=1200', name:'Skagen Easy Chair', detail:'Grey wool and solid oak. Built in Jutland.' },
+  { image:'https://images.pexels.com/photos/13169774/pexels-photo-13169774.jpeg?auto=compress&cs=tinysrgb&w=1200', name:'Bre Two Seat Sofa', detail:'Brick velvet. Modular from the inside out.' }
+];
 
-// Add premium notification animations
-const notificationStyle = document.createElement('style');
-notificationStyle.textContent = `
-    @keyframes notificationSlideIn {
-        from {
-            transform: translateY(20px);
-            opacity: 0;
-        }
-        to {
-            transform: translateY(0);
-            opacity: 1;
-        }
-    }
-    
-    @keyframes notificationSlideOut {
-        from {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateY(20px);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(notificationStyle);
+let current = 0;
+const heroImg = document.getElementById('heroImg');
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
+document.querySelectorAll('.slide-btn').forEach(button => button.addEventListener('click', () => {
+  current = (current + Number(button.dataset.dir) + slides.length) % slides.length;
+  heroImg.style.opacity = 0;
+  setTimeout(() => {
+    heroImg.src = slides[current].image;
+    heroImg.alt = slides[current].name;
+    document.getElementById('heroProduct').textContent = slides[current].name;
+    document.getElementById('heroDetails').textContent = slides[current].detail;
+    document.getElementById('slideNo').textContent = `0${current + 1} / 03`;
+    heroImg.style.opacity = 1;
+  }, 220);
+}));
 
-// Premium mobile menu toggle
-const menuBtn = document.getElementById('menuBtn');
-const navMenu = document.querySelector('.nav-menu');
-
-if (menuBtn && navMenu) {
-    menuBtn.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-    });
-}
-
-// Newsletter form submission
-const newsletterForm = document.querySelector('.newsletter-form');
-if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const email = e.target.querySelector('input[type="email"]').value;
-        showPremiumNotification('Welcome to the Nordvik community');
-        e.target.reset();
-    });
-}
-
-// Premium scroll effect for navbar
-let lastScroll = 0;
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-    
-    lastScroll = currentScroll;
-});
-
-// Scroll reveal animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+const menu = document.getElementById('menu');
+const toggleMenu = open => {
+  menu.classList.toggle('open', open);
+  menu.setAttribute('aria-hidden', String(!open));
+  document.body.style.overflow = open ? 'hidden' : '';
 };
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('reveal');
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
+document.getElementById('menuBtn').addEventListener('click', () => toggleMenu(true));
+document.getElementById('closeMenu').addEventListener('click', () => toggleMenu(false));
+document.querySelectorAll('.menu-nav').forEach(link => link.addEventListener('click', () => toggleMenu(false)));
+document.addEventListener('keydown', event => { if (event.key === 'Escape') toggleMenu(false); });
 
-// Observe elements for scroll reveal
-document.querySelectorAll('.product-card, .category-card, .featured-content, .story-content, .craftsmanship-content, .blog-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-    observer.observe(el);
-});
+const toast = document.getElementById('toast');
+let toastTimer;
 
-// Parallax effect for hero image
-const heroImage = document.querySelector('.hero-image');
-if (heroImage) {
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        if (scrolled < window.innerHeight) {
-            const rate = scrolled * -0.2;
-            heroImage.style.transform = `translateY(${rate}px)`;
-        }
-    });
+function showToast(message) {
+  clearTimeout(toastTimer);
+  toast.textContent = message;
+  toast.classList.add('show');
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 2800);
 }
 
-// Category card click functionality
-document.querySelectorAll('.category-card').forEach(card => {
-    card.addEventListener('click', function() {
-        const category = this.querySelector('h3').textContent;
-        showPremiumNotification(`Exploring ${category} collection`);
-    });
+document.getElementById('cartBtn').addEventListener('click', () => showToast('Two considered pieces are waiting in your cart.'));
+document.querySelectorAll('.configure').forEach(btn => btn.addEventListener('click', () => showToast('The Bre configurator is ready for your measurements.')));
+document.querySelectorAll('.consultation').forEach(btn => btn.addEventListener('click', () => showToast('Consultation request received. We will be in touch.')));
+document.getElementById('newsletterForm').addEventListener('submit', event => {
+  event.preventDefault();
+  showToast(`Welcome to the workshop letters, ${document.getElementById('emailInput').value}.`);
+  event.target.reset();
 });
 
-// Wishlist button functionality for product cards
-document.querySelectorAll('.wishlist-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const svg = btn.querySelector('svg');
-        if (svg.style.fill === 'var(--off-white)') {
-            svg.style.fill = 'none';
-            showPremiumNotification('Removed from wishlist');
-        } else {
-            svg.style.fill = 'var(--off-white)';
-            showPremiumNotification('Added to wishlist');
-        }
-    });
-});
+const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+  if (entry.isIntersecting) {
+    entry.target.classList.add('visible');
+    observer.unobserve(entry.target);
+  }
+}), { threshold:.13 });
 
-// Add hover sound effect simulation (visual feedback)
-document.querySelectorAll('.btn, .product-card, .category-card').forEach(el => {
-    el.addEventListener('mouseenter', function() {
-        this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-    });
-});
-
-// Lazy loading images
-if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src || img.src;
-                img.classList.add('loaded');
-                observer.unobserve(img);
-            }
-        });
-    });
-    
-    document.querySelectorAll('img[data-src]').forEach(img => {
-        imageObserver.observe(img);
-    });
-}
-
-// Initialize page load animation
-window.addEventListener('load', () => {
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease';
-    setTimeout(() => {
-        document.body.style.opacity = '1';
-    }, 100);
-});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
