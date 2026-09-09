@@ -1,96 +1,3 @@
-// Premium Cart Functionality
-let cart = [];
-const cartBtn = document.getElementById('cartBtn');
-const cartModal = document.getElementById('cartModal');
-const closeCart = document.getElementById('closeCart');
-const cartItems = document.getElementById('cartItems');
-const cartTotal = document.getElementById('cartTotal');
-const cartCount = document.querySelector('.cart-count');
-
-// Open cart modal with animation
-cartBtn.addEventListener('click', () => {
-    cartModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    updateCartDisplay();
-});
-
-// Close cart modal with animation
-closeCart.addEventListener('click', () => {
-    cartModal.classList.remove('active');
-    document.body.style.overflow = '';
-});
-
-// Close modal when clicking outside
-cartModal.addEventListener('click', (e) => {
-    if (e.target === cartModal) {
-        cartModal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-});
-
-// Add to cart functionality with notification
-document.querySelectorAll('.add-to-cart').forEach(button => {
-    button.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const name = e.target.dataset.name;
-        const price = parseInt(e.target.dataset.price);
-        
-        const existingItem = cart.find(item => item.name === name);
-        
-        if (existingItem) {
-            existingItem.quantity += 1;
-        } else {
-            cart.push({
-                name: name,
-                price: price,
-                quantity: 1
-            });
-        }
-        
-        updateCartCount();
-        showPremiumNotification(`${name} added to cart`);
-    });
-});
-
-// Update cart count display with animation
-function updateCartCount() {
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartCount.textContent = totalItems;
-    cartCount.style.transform = 'scale(1.2)';
-    setTimeout(() => {
-        cartCount.style.transform = 'scale(1)';
-    }, 200);
-}
-
-// Update cart display in modal
-function updateCartDisplay() {
-    if (cart.length === 0) {
-        cartItems.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
-        cartTotal.textContent = '$0';
-        return;
-    }
-    
-    cartItems.innerHTML = cart.map((item, index) => `
-        <div class="cart-item">
-            <div class="cart-item-info">
-                <h4>${item.name}</h4>
-                <p>$${item.price.toLocaleString()} × ${item.quantity}</p>
-            </div>
-            <button class="cart-item-remove" onclick="removeFromCart(${index})">&times;</button>
-        </div>
-    `).join('');
-    
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    cartTotal.textContent = `$${total.toLocaleString()}`;
-}
-
-// Remove item from cart
-function removeFromCart(index) {
-    cart.splice(index, 1);
-    updateCartDisplay();
-    updateCartCount();
-}
-
 // Premium notification system
 function showPremiumNotification(message) {
     const notification = document.createElement('div');
@@ -186,19 +93,6 @@ if (newsletterForm) {
     });
 }
 
-// Search functionality (placeholder)
-const searchBtn = document.getElementById('searchBtn');
-if (searchBtn) {
-    searchBtn.addEventListener('click', () => {
-        const searchTerm = prompt('Search for products:');
-        if (searchTerm) {
-            showPremiumNotification(`Searching for "${searchTerm}"`);
-        }
-    });
-}
-
-
-
 // Premium scroll effect for navbar
 let lastScroll = 0;
 window.addEventListener('scroll', () => {
@@ -230,14 +124,12 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe elements for scroll reveal
-document.querySelectorAll('.product-card, .category-card, .featured-content, .story-content, .craftsmanship-content').forEach(el => {
+document.querySelectorAll('.product-card, .category-card, .featured-content, .story-content, .craftsmanship-content, .blog-card').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
     observer.observe(el);
 });
-
-
 
 // Parallax effect for hero image
 const heroImage = document.querySelector('.hero-image');
@@ -250,8 +142,6 @@ if (heroImage) {
         }
     });
 }
-
-
 
 // Category card click functionality
 document.querySelectorAll('.category-card').forEach(card => {
