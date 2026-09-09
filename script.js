@@ -197,21 +197,7 @@ if (searchBtn) {
     });
 }
 
-// Wishlist functionality
-const wishlistBtn = document.getElementById('wishlistBtn');
-if (wishlistBtn) {
-    wishlistBtn.addEventListener('click', () => {
-        showPremiumNotification('Wishlist feature coming soon');
-    });
-}
 
-// Account functionality
-const accountBtn = document.getElementById('accountBtn');
-if (accountBtn) {
-    accountBtn.addEventListener('click', () => {
-        showPremiumNotification('Account feature coming soon');
-    });
-}
 
 // Premium scroll effect for navbar
 let lastScroll = 0;
@@ -265,7 +251,17 @@ if (heroImage) {
     });
 }
 
-// Wishlist button functionality
+
+
+// Category card click functionality
+document.querySelectorAll('.category-card').forEach(card => {
+    card.addEventListener('click', function() {
+        const category = this.querySelector('h3').textContent;
+        showPremiumNotification(`Exploring ${category} collection`);
+    });
+});
+
+// Wishlist button functionality for product cards
 document.querySelectorAll('.wishlist-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -277,14 +273,6 @@ document.querySelectorAll('.wishlist-btn').forEach(btn => {
             svg.style.fill = 'var(--off-white)';
             showPremiumNotification('Added to wishlist');
         }
-    });
-});
-
-// Category card click functionality
-document.querySelectorAll('.category-card').forEach(card => {
-    card.addEventListener('click', function() {
-        const category = this.querySelector('h3').textContent;
-        showPremiumNotification(`Exploring ${category} collection`);
     });
 });
 

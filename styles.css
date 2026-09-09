@@ -555,6 +555,8 @@ section {
     fill: var(--off-white);
 }
 
+
+
 .add-to-cart {
     position: absolute;
     bottom: 0;
@@ -784,6 +786,94 @@ section {
     font-weight: 300;
 }
 
+/* Blog Section */
+.blog-section {
+    padding: var(--section-spacing) 0;
+    background-color: var(--off-white);
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.blog-card {
+    background-color: transparent;
+    border-radius: 0;
+    overflow: hidden;
+    transition: var(--transition-medium);
+    cursor: pointer;
+}
+
+.blog-card:hover {
+    transform: translateY(-4px);
+}
+
+.blog-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    margin-bottom: 1.5rem;
+}
+
+.blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-slow);
+}
+
+.blog-card:hover .blog-image img {
+    transform: scale(1.05);
+}
+
+.blog-content {
+    padding: 0;
+}
+
+.blog-category {
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted-brown);
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+}
+
+.blog-content h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--deep-brown);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.blog-content p {
+    font-family: var(--font-primary);
+    font-size: 0.95rem;
+    color: var(--subtle-gray);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+.blog-link {
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    color: var(--dark-charcoal);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    transition: var(--transition-fast);
+}
+
+.blog-link:hover {
+    color: var(--muted-brown);
+}
+
 /* Newsletter - Minimal Design */
 .newsletter {
     padding: var(--section-spacing) 0;
@@ -903,7 +993,7 @@ section {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: 3rem;
     margin-bottom: 4rem;
 }
@@ -1186,6 +1276,10 @@ section {
     
     .new-arrivals-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .blog-grid {
+        grid-template-columns: 1fr;
     }
     
     .brand-statement h2 {
