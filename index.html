@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Page settings and browser metadata -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nordvik - Thoughtful Scandinavian Furniture</title>
   <meta name="description" content="Slow-made Scandinavian furniture for a considered life.">
+
+  <!-- Tailwind CSS is loaded from the browser Tailwind CDN for layout utility styling -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Google fonts and stylesheet used for the visual type system -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Main stylesheet for the Nordvik furniture website -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Main page shell limits the content width and creates the white page card -->
   <div class="shell">
+    <!-- Site navigation bar: brand, desktop links, cart button, and mobile menu button -->
     <nav class="h-[64px] px-8 lg:px-12 flex items-center justify-between border-b hairline bg-white">
       <a href="#home" class="flex items-center gap-2 font-semibold text-[17px] tracking-[-.05em]" aria-label="Nordvik home">
         <span class="w-4 h-4 rounded-full border border-black"></span>nordvik
@@ -26,7 +35,9 @@
       </div>
     </nav>
 
+    <!-- Main page content starts here -->
     <main>
+      <!-- Hero section: large product headline, product description, call-to-action, and main visual -->
       <section id="home" class="hero border-b hairline bg-white">
         <div class="hero-copy">
           <div>
@@ -46,6 +57,7 @@
         </div>
       </section>
 
+      <!-- Philosophy / brand story section with editorial product photos -->
       <section id="about" class="philosophy px-8 pt-[105px] pb-[70px] bg-white border-b hairline overflow-hidden">
         <div class="reveal text-center">
           <p class="text-[12px] tracking-[.1em] uppercase text-neutral-400">Our philosophy</p>
@@ -62,6 +74,7 @@
         </div>
       </section>
 
+      <!-- Collection showcase with featured products and product grid -->
       <section id="collection" class="px-7 lg:px-12 py-[75px] bg-[#f7f7f6] border-b hairline">
         <div class="reveal flex items-end justify-between gap-4 mb-8">
           <h2 class="text-[34px] leading-[1] font-light">Designed to<br>impress - built to last</h2>
@@ -78,6 +91,7 @@
         </article>
       </section>
 
+      <!-- Brand benefits and consultation area -->
       <section class="feature-grid bg-white border-b hairline">
         <div class="p-7 lg:p-12 border-r hairline reveal">
           <p class="text-[9px] uppercase tracking-[.15em] text-neutral-400 mb-5">Why Nordvik</p>
@@ -98,6 +112,7 @@
         </div>
       </section>
 
+      <!-- Journal / customer stories and sales statistics -->
       <section id="journal" class="px-7 lg:px-12 py-[90px] bg-[#f7f7f6] border-b hairline">
         <div class="reveal text-center mb-14">
           <h2 class="text-[36px] leading-[1.04] font-light">Loved in homes that<br>value the quiet details</h2>
@@ -127,6 +142,7 @@
         </div>
       </section>
 
+      <!-- Footer area contains brand information, navigation links, newsletter signup, and copyright -->
       <footer class="px-7 lg:px-12 pt-14 bg-[#151612] text-white overflow-hidden">
         <div class="footer-top">
           <div><div class="display text-[20px]">nordvik</div><p class="text-[9px] leading-4 text-neutral-500 max-w-[220px] mt-4">Furniture made slowly in Denmark, shipped to 26 countries, repaired for as long as you keep it.</p><a class="footer-link mt-5" href="mailto:studio@nordvik.dk">studio@nordvik.dk</a></div>
@@ -140,9 +156,13 @@
     </main>
   </div>
 
+  <!-- Mobile/off-canvas navigation panel opened by the menu button -->
   <aside id="menu" class="menu-panel" aria-hidden="true"><div class="menu-inner"><div class="flex justify-between items-center mb-16"><div class="text-lg">○ nordvik</div><button id="closeMenu" class="text-xs uppercase tracking-[.2em]">Close &nbsp; ×</button></div><a class="menu-big menu-nav" href="#home">Home</a><a class="menu-big menu-nav" href="#about">Philosophy</a><a class="menu-big menu-nav" href="#collection">Collection</a><a class="menu-big menu-nav" href="#journal">Journal</a></div></aside>
+
+  <!-- Toast notification shown after cart, consultation, newsletter, and configurator actions -->
   <div id="toast" class="toast" role="status">Your request has been received.</div>
 
+  <!-- JavaScript file containing interactivity for product slides, menu, toast, and scroll reveals -->
   <script src="script.js"></script>
 </body>
 </html>

@@ -1,14 +1,33 @@
+/* CSS Design Tokens and global page styling */
 :root { --ink:#111210; --line:#dedfdb; --paper:#fbfbfa; --mist:#eef1ef; --rust:#ae4f36; }
+
+/* Reset all elements to border-box sizing for consistent layouts */
 * { box-sizing: border-box; }
+
+/* Smooth scrolling for anchor navigation links */
 html { scroll-behavior: smooth; }
+
+/* Body typography and background color for the full website */
 body { margin:0; color:var(--ink); background:#fff; font-family:"DM Sans", sans-serif; }
+
+/* Shared font styling for headings and display brand appearance */
 h1,h2,h3,.display { font-family:"Manrope", sans-serif; letter-spacing:-.055em; }
+
+/* Remove tap highlight on interactive text and buttons */
 button,a { -webkit-tap-highlight-color:transparent; }
+
+/* Top-level shell that wraps the entire design card */
 .shell { width:min(1180px, calc(100% - 64px)); margin:42px auto; background:var(--paper); }
+
+/* Navigation remains sticky at the top as the user scrolls */
 .shell > nav { position:sticky; top:0; z-index:40; }
+
+/* Border helper used repeatedly across the site */
 .hairline { border-color:var(--line); }
 .nav-link::after { content:""; display:block; height:1px; width:0; margin-top:5px; background:#111; transition:width .25s ease; }
 .nav-link:hover::after,.nav-link.active::after { width:100%; }
+
+/* Hero layout: left side text and right side image with bottom product detail bar */
 .hero { min-height:565px; display:grid; grid-template-columns:55% 45%; }
 .hero-copy { min-width:0; display:flex; flex-direction:column; justify-content:space-between; padding:102px 46px 0; }
 .hero-title { font-size:clamp(45px,4.5vw,70px); line-height:.97; max-width:620px; }
@@ -17,12 +36,15 @@ button,a { -webkit-tap-highlight-color:transparent; }
 .hero-image { overflow:hidden; background:#ecebe8; }
 .hero-image img { width:100%; height:100%; object-fit:cover; transition:opacity .25s ease, transform .8s ease; }
 .hero-image:hover img { transform:scale(1.025); }
+/* Philosophy product stage: three product photos aligned with middle photo layered above */
 .product-stage { display:grid; grid-template-columns:.8fr 1.1fr .8fr; align-items:end; gap:24px; max-width:880px; margin:70px auto 0; padding:0 28px; }
 .product-shot { margin:0; text-align:center; }
 .product-shot:nth-child(2) { transform:translateY(-50px); }
 .product-shot img { width:100%; aspect-ratio:4/5; object-fit:cover; filter:saturate(.7); background:#eee; }
 .product-shot:nth-child(2) img { aspect-ratio:1/1.08; }
 .product-shot figcaption { font-size:10px; letter-spacing:.14em; margin-top:14px; text-transform:uppercase; color:#62645f; }
+
+/* Collection layout with one main product and two smaller product cards */
 .collection-grid { display:grid; grid-template-columns:1.15fr .85fr; grid-template-rows:150px 190px; gap:10px; }
 .main-product { grid-row:1/3; position:relative; overflow:hidden; background:#e9e8e4; }
 .main-product img,.wide-product img { width:100%; height:100%; object-fit:cover; transition:transform .7s ease; }
@@ -30,11 +52,14 @@ button,a { -webkit-tap-highlight-color:transparent; }
 .mini-product { display:grid; grid-template-columns:38% 62%; border:1px solid var(--line); background:white; }
 .mini-product img { width:100%; height:100%; object-fit:cover; }
 .wide-product { display:grid; grid-template-columns:58% 42%; height:215px; border:1px solid var(--line); overflow:hidden; background:white; }
+/* Feature grid split between brand benefits and studio consultation callout */
 .feature-grid { display:grid; grid-template-columns:1.08fr .92fr; }
 .benefits { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
 .benefit { border:1px solid var(--line); padding:20px; min-height:100px; transition:background .25s ease; }
 .benefit:first-child,.benefit:last-child { grid-column:1/-1; }
 .benefit:hover { background:#f1f2ef; }
+
+/* Story grid and journal article styling */
 .stories-grid { display:grid; grid-template-columns:1fr 1.2fr 1fr; gap:12px; }
 .story-panel { min-height:310px; border:1px solid var(--line); background:white; }
 .story-photo { position:relative; overflow:hidden; }
@@ -42,9 +67,13 @@ button,a { -webkit-tap-highlight-color:transparent; }
 .story-photo:hover img { transform:scale(1.03); }
 .story-copy { padding:28px; display:flex; flex-direction:column; justify-content:space-between; }
 .avatar { width:33px; height:33px; border-radius:50%; object-fit:cover; }
+
+/* Stats panel with four brand performance measurements */
 .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--line); background:white; }
 .stat { min-height:115px; display:flex; flex-direction:column; align-items:center; justify-content:center; border-right:1px solid var(--line); }
 .stat:last-child { border-right:0; }
+
+/* Footer structure: top links and newsletter, plus large brand wordmark */
 .footer-top { display:grid; grid-template-columns:1.1fr .6fr .6fr 1.05fr; gap:42px; }
 .footer-link { display:block; width:max-content; margin-top:10px; color:#a2a39f; font-size:10px; transition:color .2s; }
 .footer-link:hover { color:white; }
@@ -52,16 +81,24 @@ button,a { -webkit-tap-highlight-color:transparent; }
 .newsletter input { width:100%; min-width:0; padding:10px 0; color:white; background:transparent; border:0; outline:0; font-size:11px; }
 .newsletter button { margin-bottom:5px; padding:8px 12px; background:white; color:#111; font-size:8px; letter-spacing:.12em; text-transform:uppercase; }
 .footer-word { font:300 clamp(130px,20vw,265px)/.72 "Manrope",sans-serif; letter-spacing:-.075em; white-space:nowrap; margin:60px 0 -14px -12px; }
+
+/* Reveal animation classes used by IntersectionObserver in JavaScript */
 .reveal { opacity:0; transform:translateY(28px); transition:opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1); }
 .reveal.visible { opacity:1; transform:none; }
+
+/* Universal button styling */
 .btn { display:inline-flex; align-items:center; gap:24px; padding:14px 18px; background:#121310; color:white; font-size:10px; letter-spacing:.11em; text-transform:uppercase; transition:background .2s, transform .2s; }
 .btn:hover { background:var(--rust); transform:translateY(-2px); }
+
+/* Mobile menu (slide-in/out drawer) styling */
 .menu-panel { position:fixed; inset:0; z-index:50; background:#141511; color:white; display:flex; opacity:0; visibility:hidden; transition:.3s; }
 .menu-panel.open { opacity:1; visibility:visible; }
 .menu-panel.open .menu-inner { transform:none; }
 .menu-inner { width:100%; padding:42px max(7vw,32px); transform:translateY(20px); transition:.4s; }
 .menu-big { display:block; width:max-content; font-family:"Manrope"; font-size:clamp(44px,8vw,110px); line-height:1.05; letter-spacing:-.06em; color:#85877f; transition:color .25s; }
 .menu-big:hover { color:white; }
+
+/* Toast notification styling */
 .toast { position:fixed; right:28px; bottom:28px; z-index:60; padding:14px 18px; background:#151612; color:white; font-size:13px; transform:translateY(80px); opacity:0; transition:.3s; }
 .toast.show { transform:none; opacity:1; }
 
